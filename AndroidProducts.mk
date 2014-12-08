@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,15 +14,5 @@
 # limitations under the License.
 #
 
-# inherit from common g3
--include device/lge/g3-common/BoardConfigCommon.mk
-
-# Kernel
-TARGET_KERNEL_CONFIG := d855_defconfig
-TARGET_REQUIRES_BUMP := true
-
-# Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1929823923
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 27325360128
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/omni_d855.mk

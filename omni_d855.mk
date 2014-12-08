@@ -1,5 +1,5 @@
 #
-# Copyright 2014 The CyanogenMod Project
+# Copyright 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,15 +14,20 @@
 # limitations under the License.
 #
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+# Get the prebuilt list of APNs
+$(call inherit-product, vendor/omni/config/gsm.mk)
 
-# Inherit from d855 device
-$(call inherit-product, device/lge/d855/device.mk)
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# Set those variables here to overwrite the inherited values.
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
+
+PRODUCT_COPY_FILES += device/lge/d855/fstab.g3:recovery/root/fstab.g3
+PRODUCT_COPY_FILES += device/lge/d855/recovery.fstab:recovery/root/etc/twrp.fstab
+
 PRODUCT_DEVICE := d855
-PRODUCT_NAME := full_d855
-PRODUCT_BRAND := lge
+PRODUCT_NAME := omni_d855
+PRODUCT_BRAND := LG
 PRODUCT_MODEL := LG-D855
-PRODUCT_MANUFACTURER := LGE
+PRODUCT_MANUFACTURER := LG
